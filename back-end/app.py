@@ -43,6 +43,31 @@ def handle_delete():
 
     return response
 
+@app.route('/get', methods=['GET'])
+def handle_delete():
+    data = request.get_json()
+    print(data)
+
+    if "user_id" in data and data['user_id']: 
+        id = data['user_id'] 
+        print("id: ", id)
+        ret = myWifinance.get_all_expenses(id)  
+    else:
+        ret = False
+
+    if ret:
+        response_data = {'message': 'Success', 'query_data': ret}
+        response = make_response(response_data, 200)
+        response.headers['Content-Type'] = 'application/json'
+        response.body 
+    else:
+        response_data = {'message': 'Failed'}
+        response = make_response(response_data, 400)
+        response.headers['Content-Type'] = 'application/json'
+
+    return response
+
+
 @app.route('/update', methods=['POST'])
 def handle_update():
     data = request.get_json()
