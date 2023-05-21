@@ -1,0 +1,25 @@
+http://localhost:8080/insert
+{
+	(required)"user_id":"schmoliMei",
+	(required)"amount" :520.22,
+    (optional)"payment_type" : "xxcard",
+    (optional) "vendor" : "Doordash",
+    (optional) "date" : "2023-05-20",
+    (optional) "purchase_type": "food"
+}
+
+http://localhost:8080/update
+{
+    (required)"id" : 5
+	(optional)"user_id":"schmoliMei",
+	(optional)"amount" :520.29,
+    (optional)"payment_type" : "xxcard",
+    (optional) "vendor" : "Doordash",
+    (optional) "date" : "2023-05-20",
+    (optional) "purchase_type": "food"
+}
+
+http://localhost:8080/delete
+{
+    (required)"id" : 5
+}
