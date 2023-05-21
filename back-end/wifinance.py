@@ -4,6 +4,8 @@ from datetime import date
 from dotenv import load_dotenv
 from flask import Flask
 
+load_dotenv()
+
 class Wifinance:
     def __init__(self):
         self.expenses_db = mysql.connector.connect(
@@ -15,10 +17,11 @@ class Wifinance:
         #order of names matters
         self.safeKeys = ['user_id','amount','payment_type','vendor','date','purchase_type']
 
-    def get_all_expenses(self):
+    def get_all_expenses(self, id):
         cursor = self.expenses_db.cursor()
-        sql = "select * from expenses;"
-        cursor.execute(sql,)
+        sql = "select * from expenses where id=%s;"
+        params = (id,)
+        cursor.execute(sql,params)
         ret = cursor.fetchall()
         cursor.close()
         return ret

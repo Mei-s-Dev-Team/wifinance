@@ -44,7 +44,7 @@ def handle_delete():
     return response
 
 @app.route('/get', methods=['GET'])
-def handle_delete():
+def handle_get():
     data = request.get_json()
     print(data)
 
@@ -89,18 +89,18 @@ def handle_update():
 def hello():
     return "hello"
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
     
 
-#     app.run(debug=True, port=8080)
+    app.run(debug=True, port=8080)
 
-#     #myWifinance.insert_expenses("testMei",100.00, "visa", "Doordash", "food")
-#     #myWifinance.update_expenses(4, 'amount', 130.00)
+    #myWifinance.insert_expenses("testMei",100.00, "visa", "Doordash", "food")
+    #myWifinance.update_expenses(4, 'amount', 130.00)
     
 
-#     #myWifinance.delete_expenses(3)
+    #myWifinance.delete_expenses(3)
 
-#     #print(myWifinance.get_all_expenses())
+    #print(myWifinance.get_all_expenses())
 
-#     myWifinance.close_db()
-#     print("db closed")
+    myWifinance.close_db()
+    print("db closed")
