@@ -1,8 +1,10 @@
 from wifinance import Wifinance
 from flask import Flask, request, make_response
+from flask_cors import CORS
 
 myWifinance = Wifinance()
 app = Flask("wifinance")
+CORS(app)
 
 @app.route('/insert', methods=['POST'])
 def handle_insert():
