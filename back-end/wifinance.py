@@ -19,7 +19,7 @@ class Wifinance:
 
     def get_all_expenses(self, id):
         cursor = self.expenses_db.cursor()
-        sql = "select * from expenses where id=%s;"
+        sql = "select * from expenses where user_id=%s;"
         params = (id,)
         cursor.execute(sql,params)
         ret = cursor.fetchall()

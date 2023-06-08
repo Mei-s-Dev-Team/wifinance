@@ -1,0 +1,132 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 350px; 
+  box-sizing: border-box;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px;
+}
+
+/* Tab Header */
+h2 {
+  position: fixed;
+  text-align: center;
+  opacity: 100%;
+  color: #fff;
+  z-index: 9999;
+  font-size: 28px;
+  margin-left: 29px;
+  margin-top: -84px;
+}
+
+/* Tab Sub-Heading */
+p {
+  position: fixed;
+  text-align: center;
+  opacity: 100%;
+  color: rgb(134, 134, 134);
+  z-index: 9999;
+  max-width: 200px;
+  font-size: 13px;
+  margin-left: 50px;
+  margin-top: -22px;
+}
+
+/* Form Text Boxes */
+input[type="text"],
+select {
+  text-align: center;
+  border-radius: 20px;
+  padding: 8px;
+  border: 1px solid rgb(204, 204, 204);
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: #eae4eb; /* Change this line for text box color */
+
+}
+
+/* Submit Button (Unhovered) */
+button[type="submit"] {
+  border-radius: 25px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  color: rgb(127, 50, 118);
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 15px;
+}
+
+/* Submit Button (Hovered) */
+button[type="submit"]:hover {
+  background-color: #e5ccde;
+}
+
+/* User Textbox Input */
+.input-container-payment-type,
+.input-container-date,
+.input-container-purchase-type,
+.input-container-vendor,
+.input-container-amount,
+.input-container-user-id {
+  width: 250px;
+  z-index: 1;
+}
+
+/* Purchase Type */
+.input-container-purchase-type select {
+  text-align-last: center;
+  text-align: center; 
+}
+
+/* Form Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Form Box Container */
+.square-container {
+  box-sizing: content-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* Bottom Main Box */
+.square {
+  position: fixed;
+  width: 350px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px 0px 40px 40px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -27px;
+}
+
+/* Top Tab Box */
+.square-tab {
+  position: fixed;
+  width: 350px;
+  height: 60px;
+  background-color: rgba(182, 142, 203, 0.845);
+  border-radius: 40px 40px 0px 0px;
+  margin-top: -100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -27px;
+  z-index: 1;
+}
+
+
+

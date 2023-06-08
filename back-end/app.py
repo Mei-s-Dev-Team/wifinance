@@ -45,10 +45,11 @@ def handle_delete():
 
     return response
 
-@app.route('/get', methods=['GET'])
+@app.route('/get', methods=['POST'])
 def handle_get():
     data = request.get_json()
     print(data)
+    print("")
 
     if "user_id" in data and data['user_id']: 
         id = data['user_id'] 
@@ -61,7 +62,6 @@ def handle_get():
         response_data = {'message': 'Success', 'query_data': ret}
         response = make_response(response_data, 200)
         response.headers['Content-Type'] = 'application/json'
-        response.body 
     else:
         response_data = {'message': 'Failed'}
         response = make_response(response_data, 400)
@@ -80,6 +80,7 @@ def handle_update():
         response_data = {'message': 'Success'}
         response = make_response(response_data, 200)
         response.headers['Content-Type'] = 'application/json'
+        print("response")
     else:
         response_data = {'message': 'Failed'}
         response = make_response(response_data, 400)

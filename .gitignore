@@ -1,3 +1,6 @@
 *.pyc
 *.env
+*.cache
+node_modules/
+FRONTEND/node_modules/
 to-do.txt
