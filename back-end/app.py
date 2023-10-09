@@ -5,6 +5,7 @@ from flask_cors import CORS
 myWifinance = Wifinance()
 app = Flask("wifinance")
 CORS(app)
+app.debug = True
 
 @app.route('/insert', methods=['POST'])
 def handle_insert():
@@ -48,8 +49,6 @@ def handle_delete():
 @app.route('/get', methods=['POST'])
 def handle_get():
     data = request.get_json()
-    print(data)
-    print("")
 
     if "user_id" in data and data['user_id']: 
         id = data['user_id'] 
@@ -62,6 +61,9 @@ def handle_get():
         response_data = {'message': 'Success', 'query_data': ret}
         response = make_response(response_data, 200)
         response.headers['Content-Type'] = 'application/json'
+        # print(f"1. {ret}\n")
+        # print(f"2. {response_data}\n")
+        # print(f"3. {response}\n")
     else:
         response_data = {'message': 'Failed'}
         response = make_response(response_data, 400)

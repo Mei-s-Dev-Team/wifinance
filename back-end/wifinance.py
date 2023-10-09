@@ -1,4 +1,5 @@
 import mysql.connector
+import pymysql
 import os
 from datetime import date
 from dotenv import load_dotenv
@@ -8,22 +9,25 @@ load_dotenv()
 
 class Wifinance:
     def __init__(self):
-        self.expenses_db = mysql.connector.connect(
+        self.expenses_db = pymysql.connect(
             host = os.getenv("DB_HOST"),
             user = os.getenv("DB_USER"),
             password = os.getenv("DB_PW"),
             database = 'wifinance'
         )
+        
         #order of names matters
         self.safeKeys = ['user_id','amount','payment_type','vendor','date','purchase_type']
 
     def get_all_expenses(self, id):
         cursor = self.expenses_db.cursor()
-        sql = "select * from expenses where user_id=%s;"
+        sql = "select * from expenses where user_id = %s;"
         params = (id,)
+        print(f"{params} {sql}")
         cursor.execute(sql,params)
         ret = cursor.fetchall()
         cursor.close()
+        # print(ret)
         return ret
     
     #order of variables matters

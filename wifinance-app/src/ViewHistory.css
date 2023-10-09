@@ -1,0 +1,7 @@
+.transaction-data {
+    display: flex;
+    flex-direction: row;
+}
+.transaction-data-column {
+    width: 300px;
+}
