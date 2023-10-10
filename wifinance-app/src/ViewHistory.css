@@ -1,7 +1,16 @@
 .transaction-data {
     display: flex;
+    flex-direction: column;
+}
+.transaction-data-row {
+    display: flex;
     flex-direction: row;
 }
-.transaction-data-column {
+.transaction-data-row p {
+    height: 50px;
     width: 300px;
+}
+.transaction-data-row button {
+    height: 30px;
+    width: 100px;
 }

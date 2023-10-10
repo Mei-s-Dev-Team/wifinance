@@ -45,8 +45,9 @@ const ViewHistoryForm = () => {
   const sortTransactionHistory = (responseData) => {
     const sortedTransactionHistory = [];
     for (let i = 0; i < responseData.query_data.length; i++) {
-      sortedTransactionHistory.push([responseData.query_data[i][2],responseData.query_data[i][3],
-          responseData.query_data[i][4],responseData.query_data[i][5],responseData.query_data[i][6]]
+      sortedTransactionHistory.push(
+        [responseData.query_data[i][0],responseData.query_data[i][2],responseData.query_data[i][3],
+        responseData.query_data[i][4],responseData.query_data[i][5],responseData.query_data[i][6]]
         );
     }
     // Sorts it by datetime
@@ -59,6 +60,7 @@ const ViewHistoryForm = () => {
     return sortedTransactionHistory;
   }
 
+  const pageNumber = 0;
   return (
     <div>
       <div id="first-section">   
@@ -67,47 +69,62 @@ const ViewHistoryForm = () => {
           <button type="submit">Retrieve Finances</button>
         </form>
         <div className='transaction-data'>
-          <div className='transaction-data-column' id='price'>
-            <p>{transactionHistory[0]?.[0] ?? ''}</p>
-            <p>{transactionHistory[1]?.[0] ?? ''}</p>
-            <p>{transactionHistory[2]?.[0] ?? ''}</p>
-            <p>{transactionHistory[3]?.[0] ?? ''}</p>
-            <p>{transactionHistory[4]?.[0] ?? ''}</p>
-            <p>{transactionHistory[5]?.[0] ?? ''}</p>
-            <p>{transactionHistory[6]?.[0] ?? ''}</p>
-          </div>
-          <div className='transaction-data-column' id='location'>
-            <p>{transactionHistory[0]?.[2] ?? ''}</p>
-            <p>{transactionHistory[1]?.[2] ?? ''}</p>
-            <p>{transactionHistory[2]?.[2] ?? ''}</p>
-            <p>{transactionHistory[3]?.[2] ?? ''}</p>
-            <p>{transactionHistory[4]?.[2] ?? ''}</p>
-            <p>{transactionHistory[5]?.[2] ?? ''}</p>
-            <p>{transactionHistory[6]?.[2] ?? ''}</p>
-          </div>
-          <div className='transaction-data-column' id='date'>
-            <p>{transactionHistory[0]?.[3] ?? ''}</p>
-            <p>{transactionHistory[1]?.[3] ?? ''}</p>
-            <p>{transactionHistory[2]?.[3] ?? ''}</p>
-            <p>{transactionHistory[3]?.[3] ?? ''}</p>
-            <p>{transactionHistory[4]?.[3] ?? ''}</p>
-            <p>{transactionHistory[5]?.[3] ?? ''}</p>
-            <p>{transactionHistory[6]?.[3] ?? ''}</p>
-          </div>
-          <div className='transaction-data-column' id='category'>
-            <p>{transactionHistory[0]?.[4] ?? ''}</p>
-            <p>{transactionHistory[1]?.[4] ?? ''}</p>
-            <p>{transactionHistory[2]?.[4] ?? ''}</p>
-            <p>{transactionHistory[3]?.[4] ?? ''}</p>
-            <p>{transactionHistory[4]?.[4] ?? ''}</p>
-            <p>{transactionHistory[5]?.[4] ?? ''}</p>
-            <p>{transactionHistory[6]?.[4] ?? ''}</p>
-          </div>
+          <TransRow rowNumber={0} pageNumber={pageNumber} data={transactionHistory}/>
+          <TransRow rowNumber={1} pageNumber={pageNumber} data={transactionHistory}/>
+          <TransRow rowNumber={2} pageNumber={pageNumber} data={transactionHistory}/>
+          <TransRow rowNumber={3} pageNumber={pageNumber} data={transactionHistory}/>
+          <TransRow rowNumber={4} pageNumber={pageNumber} data={transactionHistory}/>
+          <TransRow rowNumber={5} pageNumber={pageNumber} data={transactionHistory}/>
         </div>
       </div>
     </div>
 
   );
 };
+
+const TransRow = (props) => {
+  const transaction = props.data[props.rowNumber+(6*props.pageNumber)] ?? []; 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    const ID = transaction[0];
+    const deleteData = {
+      id: ID
+    };
+
+    // Send HTTP POST request to server
+    try {
+      const response = await fetch('http://localhost:8080/delete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(deleteData)
+      });
+      console.log(response);
+      // Handle response
+      if (response.ok) {
+        // Success
+        const responseData = await response.json(); 
+        console.log(responseData.query_data);
+        alert('Request successful');
+      } else {
+        // Error
+        alert('Error submitting  (Delete)');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred in attempt to delete data');
+    }
+  }
+  return (
+    <div className='transaction-data-row'>
+      <p>{transaction[1]}</p>
+      <p>{transaction[3]}</p>
+      <p>{transaction[4]}</p>
+      <p>{transaction[5]}</p>
+      <button onClick={handleDelete}>Delete</button>
+    </div>
+  );
+}
 
 export default ViewHistoryForm;
