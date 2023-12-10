@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from './navbar';
 import Home from './home';
 import About from './insertexpenses';
@@ -17,6 +17,10 @@ fontLink2.rel = 'stylesheet';
 document.head.appendChild(fontLink2);
 
 function App() {
+
+  // Brought this variable up so that ViewHistory.js has global scope of it.
+  const [transactionHistory, setTransactionHistory] = useState([]);
+
   return (
     <body style={{ fontFamily: 'Numans, Krub, sans-serif' }}>
       
@@ -26,7 +30,10 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/Submit-Transaction" element={<About />} />
-          <Route path="/View-History" element={<RetrieveHistory />} />
+          <Route
+          path="/View-History"
+          element={<RetrieveHistory transactionHistory={transactionHistory} setTransactionHistory={setTransactionHistory} />}
+          />
         </Routes>
       </nav>
 

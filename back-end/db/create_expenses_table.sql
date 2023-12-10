@@ -1,11 +1,11 @@
-USE wifinance;
+USE wpdb;
 
 CREATE TABLE expenses (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id VARCHAR(100),
-  amount DECIMAL(10, 2),
-  payment_type VARCHAR(50),
-  vendor VARCHAR(100),
-  date DATE,
-  purchase_type VARCHAR(50)
+  productID INT AUTO_INCREMENT PRIMARY KEY,
+  productName VARCHAR(30),
+  productDescription VARCHAR(150),
+  productPrice DECIMAL(2, 2),
+  productType VARCHAR(20),
+  productDate DATE,
+  productStock TINYINT(1)
 );

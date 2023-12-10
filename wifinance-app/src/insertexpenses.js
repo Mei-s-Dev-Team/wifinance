@@ -97,33 +97,15 @@ const InsertExpenses = () => {
             value={purchase_type}
             onChange={(e) => setPurchase_type(e.target.value)}
           >
-            <option value="">Select Purchase Type</option>
-            <option value="">----------------------------------</option>
-            <option value="Education - Tuition">Education - Tuition</option>
-            <option value="Education - Services">Education - Services</option>
-            <option value="Education - Supplies">Education - Supplies</option>
-            <option value="">----------------------------------</option>
-            <option value="Entertainment - General">Entertainment - General</option>
-            <option value="">----------------------------------</option>
-            <option value="Food - Dining">Food - Dining</option>
-            <option value="Food - Grocery">Food - Grocery</option>
-            <option value="">----------------------------------</option>
-            <option value="Health - Medicine">Health - Medicine</option>
-            <option value="Health - Services">Health - Services</option>
-            <option value="">----------------------------------</option>
-            <option value="Home - Furniture">Home - Furniture</option>
-            <option value="Home - Toiletries">Home - Toiletries</option>
-            <option value="Home - Utilities">Home - Utilities</option>
-            <option value="">----------------------------------</option>
+            <option value="Education">Education</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Food">Food</option>
+            <option value="Health">Health</option>
+            <option value="Home">Home</option>
             <option value="Services - Subscriptions">Services - Subscriptions</option>
             <option value="Services - Commissions">Services - Commissions</option>
-            <option value="">----------------------------------</option>
-            <option value="Technology - Application">Technology - Application</option>
-            <option value="Technology - Device">Technology - Device</option>
-            <option value="">----------------------------------</option>
-            <option value="Transportation - Gas">Transportation - Gas</option>
-            <option value="Transportation - Public">Transportation - Public</option>
-            <option value="">----------------------------------</option>
+            <option value="Technology">Technology</option>
+            <option value="Transportation">Transportation</option>
             <option value="Other">Other</option>
             {/* Add more options as needed */}
           </select>
